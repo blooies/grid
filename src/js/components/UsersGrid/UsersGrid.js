@@ -3,7 +3,7 @@ import UserCard from '../UserCard/UserCard';
 import './users-grid.less';
 
 const UsersGrid = ({ users }) => (
-  <div className='user-grid'>
+  <div className='users-grid'>
     {
       users.map((user, index) => (
         <UserCard

@@ -1,4 +1,17 @@
+@screen-sm-min: 768px;
+
 .users-grid {
+  display: grid;
   font-family: 'Courier New', monospace;
   font-size: 12px;
+  grid-template-columns: 32% 32% 32%;
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: @screen-sm-min) {
+  .users-grid {
+    grid-template-columns: 100%;
+  }
 }
