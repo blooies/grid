@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from './containers/App/App';
@@ -22,9 +21,5 @@ const Root = ({ store }) => (
     </Router>
   </Provider>
 );
-
-Root.propTypes = {
-  store: PropTypes.object.isRequired
-};
 
 export default Root;
