@@ -1,7 +1,14 @@
 import { combineReducers } from 'redux';
-// import { login } from './login';
+import { auth } from './auth';
 import { users } from './users';
+import { loginError } from './login';
+import { filterType } from './filterType';
+import { sortType } from './sortType';
 
 export default combineReducers({
-  users
+  auth,
+  users,
+  loginError,
+  filterType,
+  sortType
 })
