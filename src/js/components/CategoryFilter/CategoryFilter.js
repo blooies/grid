@@ -7,13 +7,14 @@ const CategoryFilter = ({ currentCategory, categories, handleCategorySelect }) =
     <label className='form-label'>Categories</label>
     <div className='form-radio'>
       <RadioInput
-        value='reset'
-        checked={currentCategory === 'reset'}
+        value='all'
+        checked={!currentCategory}
         onChange={handleCategorySelect}
       />
       {
-        categories.map(category => (
+        categories.map((category, index) => (
           <RadioInput
+            key={`category-${index}`}
             value={category}
             checked={currentCategory === category}
             onChange={handleCategorySelect}
