@@ -9,9 +9,7 @@
     "url": "https://github.com/Clarifai/front-end.git"
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "start:server": "node src/js/server/server.js",
-    "start:dev": "npm run start"
+    "start": "webpack-dev-server --open"
   },
   "proxy": "http://localhost:8080",
   "devDependencies": {

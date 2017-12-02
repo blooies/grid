@@ -5,7 +5,6 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import Toast from '../../components/Toast/Toast';
 import { login } from '../../actions/login';
 
-
 const ERROR_MESSAGES = {
   email: 'Please enter a valid email.',
   password: 'Please enter a password at least 10 characters long and contains at least 1 non alphanumeric character.',
@@ -30,7 +29,6 @@ class LoginContainer extends Component {
   // lists the different fields we want to validate and their rules;
   // regex: https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript;
   // but probably should also enforce validations on back-end;
-  // accepts object {type: fieldName, content: content}
   validate(obj) {
     let valid = false;
     let regex;

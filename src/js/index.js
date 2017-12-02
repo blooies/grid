@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
 import { render } from 'react-dom';
+import rootReducer from './reducers';
 import Root from './root';
 
 function createFinalStore(initialState) {

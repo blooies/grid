@@ -59,7 +59,7 @@ class App extends Component {
     const { location } = this.props;
     const path = location.pathname;
 
-    // go to a logged out route (/login)
+    // user goes to a logged out route (/login)
     if (this.loggedOutRoutes.includes(path)) {
       return this.renderLoggedOutRequiredRoutes();
     }

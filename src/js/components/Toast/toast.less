@@ -1,15 +1,19 @@
+// TODO: move these colors to a common file
+@red: #FF0000;
+@green: #18d642;
+@black: #000000;
+
 .message-container {
+  background-color: @green;
+  border: 1px solid @black;
   font-family: 'Courier New', monospace;
   max-width: 150px;
   position: absolute;
-  top: 0;
-  border: 1px solid black;
   right: 0;
-
+  top: 0;
   &.error {
-    background-color: red;
+    background-color: @red;
     color: #ffffff;
     padding: 30px 50px;
-    transition: padding 2s;
   }
 }

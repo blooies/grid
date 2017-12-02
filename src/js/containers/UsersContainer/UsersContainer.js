@@ -64,7 +64,7 @@ class UsersContainer extends Component {
   }
 
   render() {
-    const { users, sortType, filterType } = this.props;
+    const { users, filterType } = this.props;
     const categories = uniq(users.map(user => user.category));
     const visibleUsers = this.getVisibleUsers();
 
