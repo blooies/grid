@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import App from './containers/App/App';
 import UsersContainer from './containers/UsersContainer/UsersContainer';
 import LoginContainer from './containers/LoginContainer/LoginContainer';
@@ -7,18 +7,12 @@ import LoginContainer from './containers/LoginContainer/LoginContainer';
 // this lists out all possible routes and their respective views;
 const Root = ({ store }) => (
   <Provider store={store}>
-    <Router>
-      <div>
-        <Route
-          path="/login"
-          component={LoginContainer}
-        />
-        <Route
-          path="/users"
-          component={UsersContainer}
-        />
-      </div>
-    </Router>
+    <BrowserRouter>
+      <App>
+        <Route path="/login" component={LoginContainer}/>
+        <Route path="/users" component={UsersContainer}/>
+      </App>
+    </BrowserRouter>
   </Provider>
 );
 
