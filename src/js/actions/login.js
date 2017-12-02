@@ -14,14 +14,16 @@ export function login({ email, password }) {
     return fetch('/user')
       .then(response => response.json())
       .then(credentials => {
+        let token = null;
         if (credentials.data.username === email &&
           credentials.data.password === password) {
-            const token = generateSession();
+            token = generateSession();
             localStorage.setItem('user:sessionToken', token);
             dispatch(authSuccess(token));
         } else {
           dispatch(loginError(true));
         }
+        return token;
       })
   }
 }

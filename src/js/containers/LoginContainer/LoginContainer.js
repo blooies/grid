@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import Toast from '../../components/Toast/Toast';
-import { login } from '../../actions/login';
+import { login, loginError } from '../../actions/login';
 
 const ERROR_MESSAGES = {
   email: 'Please enter a valid email.',
@@ -83,8 +83,9 @@ class LoginContainer extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const { loginError } = newProps;
-    if (loginError) {
+    const { loginError } = this.props;
+    const { loginError: newLoginError } = newProps;
+    if (loginError !== newLoginError && newLoginError) {
       this.addMessages([{
         message: ERROR_MESSAGES.credentials
       }])
@@ -93,11 +94,8 @@ class LoginContainer extends Component {
 
   onFormSubmit = (e) => {
     const { email, password } = this.state;
-    const { login } = this.props;
+    const { login, onLoginError } = this.props;
     e.preventDefault();
-
-    // clear our queue
-    this.clearMessages();
 
     // get the validations
     const messages = this.getValidationMessages({
@@ -106,20 +104,15 @@ class LoginContainer extends Component {
     })
 
     if (messages.length > 0) {
+      onLoginError(false);
       this.addMessages(messages);
-    // login if no error messages
+    // login if no client side error messages
     } else {
       login({
         email,
         password
       })
     }
-  }
-
-  clearMessages() {
-    this.setState({
-      messages: []
-    })
   }
 
   addMessages(messages) {
@@ -141,7 +134,6 @@ class LoginContainer extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { auth } = this.props;
     return (
       <div>
         {this.renderMessages()}
@@ -159,16 +151,16 @@ class LoginContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { auth, loginError } = state;
+  const { loginError } = state;
   return {
-    auth,
     loginError
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => dispatch(login(email, password))
+    login: (email, password) => dispatch(login(email, password)),
+    onLoginError: (bool) => dispatch(loginError(bool))
   };
 }
 
