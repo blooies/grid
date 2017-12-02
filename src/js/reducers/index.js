@@ -8,6 +8,7 @@ import { sortType } from './sortType';
 export default combineReducers({
   auth,
   users,
+  // TODO: change this to login reducer and different types to handle errors, success, etc
   loginError,
   filterType,
   sortType

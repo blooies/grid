@@ -37,7 +37,7 @@ class App extends Component {
       return this.renderChildrenRoutes();
     } else {
       return (
-        <Redirect to="/login"/>
+        <Redirect to='/login'/>
       )
     }
   }
@@ -70,7 +70,7 @@ class App extends Component {
   render() {
     return (
       <div className='main-container'>
-        { this.renderRoutes() }
+        {this.renderRoutes()}
       </div>
     );
   }

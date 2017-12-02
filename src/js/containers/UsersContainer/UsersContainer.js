@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sortBy, uniq } from 'underscore';
+// TODO: add index.js file in components folder to load all components from 1 shared file
 import SortFilter from '../../components/SortFilter/SortFilter';
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter';
 import UsersGrid from '../../components/UsersGrid/UsersGrid';
@@ -65,7 +66,7 @@ class UsersContainer extends Component {
 
   render() {
     const { users, filterType } = this.props;
-    const categories = uniq(users.map(user => user.category));
+    const categories = uniq(users.map(user => user.category)).sort();
     const visibleUsers = this.getVisibleUsers();
 
     return (
