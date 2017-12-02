@@ -14,6 +14,7 @@ const envVars = Object.keys(env).reduce((a, k) => {
   return a;
 }, {});
 
+
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
@@ -45,6 +46,8 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: [/node_modules/, /styles/],
+
+        // TODO: add es-linter
         // loaders: ['eslint-loader']
       },
       {
@@ -70,25 +73,25 @@ module.exports = {
       }
     ]
   },
+
   // set up dev server
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     port: 9000,
     historyApiFallback: true,
+
     // mock up fake endpoints
     before(app) {
-     app.get('/data', function(req, res) {
-      console.log("HERE DATA!")
-      const data = read.sync('data.json');
-      res.json({ users: data });
-    });
+      app.get('/data', function(req, res) {
+        const data = read.sync('data.json');
+        res.json({ users: data });
+      });
 
-     app.get('/user', function(req, res) {
+      app.get('/user', function(req, res) {
         res.json({ data: {
-          username: envVars.USERNAME,
-          password: envVars.PASSWORD
-        } 
-        });
+          username: JSON.parse(envVars.USERNAME),
+          password: JSON.parse(envVars.PASSWORD)
+        }});
       });
     }
   },

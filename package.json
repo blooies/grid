@@ -1,8 +1,8 @@
 {
-  "name": "zola-users-grid ",
+  "name": "grid",
   "license": "UNLICENSED",
   "version": "0.0.0",
-  "description": "zola-users-grid",
+  "description": "grid",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -52,6 +52,7 @@
     "react-router-dom": "^4.1.1",
     "read-data": "^1.1.0",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "underscore": "^1.8.3"
   }
 }
